@@ -1,6 +1,6 @@
 local classVehicles = {
-    SS = {'tr_pdmstang', 'police'},
-    o = {'tr_pdmstang', 'police'},
+    SS = {'police9', 'police'},
+    o = {'police7', 'police8'},
     S = {  "le7b", "sc1", "virtue", "champion", "banshee2", "cheetah", "furia", "thrax", "torero", 
     "turismo2", "turismor", "prototipo", "viseris", "s80", "sultanrs", "coquette4", "locust", 
     "visione", "emerus", "neo", "penetrator", "swinger", "xa21", "autarch", "fmj", "italigto", 
