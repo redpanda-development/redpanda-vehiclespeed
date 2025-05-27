@@ -1,5 +1,5 @@
 local classVehicles = {
-    SS = {'police9', 'police'},
+    SS = {'rbuwu', 'police'},
     o = {'police7', 'police8'},
     S = {  "le7b", "sc1", "virtue", "champion", "banshee2", "cheetah", "furia", "thrax", "torero", 
     "turismo2", "turismor", "prototipo", "viseris", "s80", "sultanrs", "coquette4", "locust", 
@@ -50,10 +50,10 @@ local classSpeeds = {
 }
 
 
-local mphToMetersPerSecond = 0.44704
+local kmhToMetersPerSecond = 0.277778  -- 1 km/h = 0.277778 m/s
 
-local function SetVehicleSpeed(vehicle, speed)
-    local speedInMetersPerSecond = speed * mphToMetersPerSecond
+local function SetVehicleSpeed(vehicle, speedKmh)
+    local speedInMetersPerSecond = speedKmh * kmhToMetersPerSecond
     SetEntityMaxSpeed(vehicle, speedInMetersPerSecond)
 end
 
@@ -70,8 +70,8 @@ Citizen.CreateThread(function()
             for class, vehicles in pairs(classVehicles) do
                 for _, vehicleClass in ipairs(vehicles) do
                     if GetHashKey(vehicleClass) == vehicleModel then
-                        local maxSpeed = classSpeeds[class]
-                        SetVehicleSpeed(vehicle, maxSpeed)
+                        local maxSpeedKmh = classSpeeds[class]
+                        SetVehicleSpeed(vehicle, maxSpeedKmh)
                         break
                     end
                 end
@@ -79,3 +79,35 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+
+
+-- local mphToMetersPerSecond = 1.609344
+
+-- local function SetVehicleSpeed(vehicle, speed)
+--     local speedInMetersPerSecond = speed * mphToMetersPerSecond
+--     SetEntityMaxSpeed(vehicle, speedInMetersPerSecond)
+-- end
+
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(500)
+
+--         local playerPed = PlayerPedId()
+--         local vehicle = GetVehiclePedIsIn(playerPed, false)
+
+--         if DoesEntityExist(vehicle) and IsEntityAVehicle(vehicle) then
+--             local vehicleModel = GetEntityModel(vehicle)
+
+--             for class, vehicles in pairs(classVehicles) do
+--                 for _, vehicleClass in ipairs(vehicles) do
+--                     if GetHashKey(vehicleClass) == vehicleModel then
+--                         local maxSpeed = classSpeeds[class]
+--                         SetVehicleSpeed(vehicle, maxSpeed)
+--                         break
+--                     end
+--                 end
+--             end
+--         end
+--     end
+-- end)
